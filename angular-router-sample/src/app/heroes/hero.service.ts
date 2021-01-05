@@ -20,7 +20,8 @@ export class HeroService {
     return of(HEROES);
   }
 
-  getHero(id: any) {
+  getHero(id: any): Observable<Hero> {
+    this.messageService.add(`HeroService: search ${id} in HEROES`)
     return this.getHeroes().pipe(
       map((heroes: Hero[]) => heroes.find(hero => hero.id === +id))
     );
