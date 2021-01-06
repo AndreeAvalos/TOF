@@ -10,6 +10,8 @@ import { HeroesModule } from './heroes/heroes.module';
 import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
     FormsModule,
     HeroesModule,
     CrisisCenterModule,
+    AuthModule,
+    AdminModule,
     AppRoutingModule
   ],
   declarations: [

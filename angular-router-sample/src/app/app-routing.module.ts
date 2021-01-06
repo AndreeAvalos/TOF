@@ -8,6 +8,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/heroes', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
   { path: 'compose', component: ComposeMessageComponent, outlet: 'popup'},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),}
 ];
 
 @NgModule({
