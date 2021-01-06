@@ -5,7 +5,8 @@ import {
   RouterStateSnapshot,
   CanActivateChild,
   NavigationExtras,
-  UrlTree
+  UrlTree,
+  Route
 } from '@angular/router';
 import { AuthService } from './auth.service';
 
@@ -23,6 +24,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): true|UrlTree {
     return this.canActivate(route, state);
+  }
+  canLoad(route: Route): true|UrlTree{
+    const url = `/${route.path}`;
+  
+    return this.checkLogin(url);
   }
 
   checkLogin(url: string): true|UrlTree {

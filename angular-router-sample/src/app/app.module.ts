@@ -11,7 +11,7 @@ import { CrisisCenterModule } from './crisis-center/crisis-center.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ComposeMessageComponent } from './compose-message/compose-message.component';
 import { AuthModule } from './auth/auth.module';
-import { AdminModule } from './admin/admin.module';
+import { Router } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -22,7 +22,6 @@ import { AdminModule } from './admin/admin.module';
     HeroesModule,
     CrisisCenterModule,
     AuthModule,
-    AdminModule,
     AppRoutingModule
   ],
   declarations: [
@@ -32,4 +31,12 @@ import { AdminModule } from './admin/admin.module';
   ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  // Diagnostic only: inspect router configuration
+  constructor(router: Router) {
+    // Use a custom replacer to display function names in the route configs
+    const replacer = (key, value) => (typeof value === 'function') ? value.name : value;
+
+    console.log('Routes: ', JSON.stringify(router.config, replacer, 2));
+  }
+}
